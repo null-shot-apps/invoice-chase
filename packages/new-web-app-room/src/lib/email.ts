@@ -60,7 +60,7 @@ export async function sendReminderEmail(
       };
     }
 
-    const data = await response.json();
+    const data = await response.json() as { message?: string };
     return {
       success: true,
       message: data.message || 'Email sent successfully',
