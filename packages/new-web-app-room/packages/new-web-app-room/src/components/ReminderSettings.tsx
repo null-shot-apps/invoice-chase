@@ -14,45 +14,19 @@ export default function ReminderSettings() {
     {
       day: 7,
       subject: 'Friendly Payment Reminder',
-      message: `Hi {clientName},
-
-I hope this message finds you well! I wanted to send a quick reminder that invoice #{invoiceId} for {amount} was due on {dueDate}.
-
-I know things can get busy, so I just wanted to make sure this didn't slip through the cracks. If you've already sent payment, please disregard this message!
-
-If you have any questions or need to discuss the invoice, feel free to reach out.
-
-Thanks!`,
+      message: 'Hi {clientName},\n\nI hope this message finds you well! I wanted to send a quick reminder that invoice #{invoiceId} for {amount} was due on {dueDate}.\n\nI know things can get busy, so I just wanted to make sure this didn\'t slip through the cracks. If you\'ve already sent payment, please disregard this message!\n\nIf you have any questions or need to discuss the invoice, feel free to reach out.\n\nThanks!',
       tone: 'friendly'
     },
     {
       day: 14,
       subject: 'Payment Follow-up Required',
-      message: `Hi {clientName},
-
-I'm following up on invoice #{invoiceId} for {amount}, which was due on {dueDate}. It's now {daysOverdue} days overdue.
-
-I understand that delays happen, but I wanted to check in to see if there are any issues with the invoice or if you need any additional information from me.
-
-Please let me know when I can expect payment, or if there's anything we need to discuss.
-
-Best regards,`,
+      message: 'Hi {clientName},\n\nI\'m following up on invoice #{invoiceId} for {amount}, which was due on {dueDate}. It\'s now {daysOverdue} days overdue.\n\nI understand that delays happen, but I wanted to check in to see if there are any issues with the invoice or if you need any additional information from me.\n\nPlease let me know when I can expect payment, or if there\'s anything we need to discuss.\n\nBest regards,',
       tone: 'firm'
     },
     {
       day: 30,
       subject: 'Final Notice - Payment Required',
-      message: `Dear {clientName},
-
-This is a final notice regarding invoice #{invoiceId} for {amount}, which is now {daysOverdue} days overdue (due date: {dueDate}).
-
-As per our agreement, a late fee of {lateFee} has been applied to this invoice, bringing the total to {totalWithLateFee}.
-
-Please remit payment within 5 business days to avoid further action. If payment has already been sent, please provide confirmation.
-
-If you're experiencing difficulties with payment, please contact me immediately to discuss payment arrangements.
-
-Regards,`,
+      message: 'Dear {clientName},\n\nThis is a final notice regarding invoice #{invoiceId} for {amount}, which is now {daysOverdue} days overdue (due date: {dueDate}).\n\nAs per our agreement, a late fee of {lateFee} has been applied to this invoice, bringing the total to {totalWithLateFee}.\n\nPlease remit payment within 5 business days to avoid further action. If payment has already been sent, please provide confirmation.\n\nIf you\'re experiencing difficulties with payment, please contact me immediately to discuss payment arrangements.\n\nRegards,',
       tone: 'formal'
     }
   ]);
