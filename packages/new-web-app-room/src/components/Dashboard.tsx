@@ -23,49 +23,14 @@ export default function Dashboard() {
   const [emailPreview, setEmailPreview] = useState({ subject: '', body: '' });
 
   useEffect(() => {
-    // Load invoices from localStorage
+    // Load invoices from localStorage - NO DUMMY DATA
     const stored = localStorage.getItem('invoices');
     if (stored) {
       const parsed = JSON.parse(stored);
       setInvoices(parsed);
     } else {
-      // Demo data
-      const demoInvoices: Invoice[] = [
-        {
-          id: '1',
-          clientName: 'Acme Corp',
-          clientEmail: 'billing@acmecorp.com',
-          amount: 2500,
-          dueDate: '2024-11-25',
-          status: 'overdue',
-          daysSinceDue: 15,
-          remindersSent: 2,
-          lastReminderDate: '2024-12-08'
-        },
-        {
-          id: '2',
-          clientName: 'TechStart Inc',
-          clientEmail: 'payments@techstart.com',
-          amount: 1800,
-          dueDate: '2024-12-15',
-          status: 'pending',
-          daysSinceDue: 0,
-          remindersSent: 0
-        },
-        {
-          id: '3',
-          clientName: 'Design Studio',
-          clientEmail: 'finance@designstudio.com',
-          amount: 3200,
-          dueDate: '2024-11-30',
-          status: 'overdue',
-          daysSinceDue: 10,
-          remindersSent: 1,
-          lastReminderDate: '2024-12-05'
-        }
-      ];
-      setInvoices(demoInvoices);
-      localStorage.setItem('invoices', JSON.stringify(demoInvoices));
+      // Start with empty array
+      setInvoices([]);
     }
   }, []);
 
@@ -300,39 +265,41 @@ export default function Dashboard() {
         )}
       </div>
 
-      {/* Late Payer Insights */}
-      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-        <h2 className="text-xl font-bold text-white mb-4">Client Payment Patterns</h2>
-        <div className="space-y-3">
-          <div className="flex items-center justify-between p-3 bg-black/20 rounded">
-            <div>
-              <p className="text-white font-medium">Acme Corp</p>
-              <p className="text-sm text-gray-400">Average: 22 days to payment</p>
-            </div>
-            <span className="px-3 py-1 bg-red-500/20 text-red-400 text-sm rounded">
-              Chronic Late Payer
-            </span>
-          </div>
-          <div className="flex items-center justify-between p-3 bg-black/20 rounded">
-            <div>
-              <p className="text-white font-medium">TechStart Inc</p>
-              <p className="text-sm text-gray-400">Average: 12 days to payment</p>
-            </div>
-            <span className="px-3 py-1 bg-green-500/20 text-green-400 text-sm rounded">
-              Reliable
-            </span>
-          </div>
-          <div className="flex items-center justify-between p-3 bg-black/20 rounded">
-            <div>
-              <p className="text-white font-medium">Design Studio</p>
-              <p className="text-sm text-gray-400">Average: 18 days to payment</p>
-            </div>
-            <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 text-sm rounded">
-              Moderate
-            </span>
+      {/* Late Payer Insights - Real Data Only */}
+      {invoices.length > 0 && (
+        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+          <h2 className="text-xl font-bold text-white mb-4">Client Payment Patterns</h2>
+          <div className="space-y-3">
+            {Array.from(new Set(invoices.map(i => i.clientName))).map(clientName => {
+              const clientInvoices = invoices.filter(i => i.clientName === clientName);
+              const paidInvoices = clientInvoices.filter(i => i.status === 'paid');
+              const avgDays = paidInvoices.length > 0 
+                ? Math.round(paidInvoices.reduce((sum, inv) => sum + (inv.daysSinceDue || 0), 0) / paidInvoices.length)
+                : 0;
+              const reliability = avgDays <= 7 ? 'Reliable' : avgDays <= 14 ? 'Moderate' : 'Chronic Late Payer';
+              const reliabilityColor = avgDays <= 7 ? 'green' : avgDays <= 14 ? 'yellow' : 'red';
+              
+              return (
+                <div key={clientName} className="flex items-center justify-between p-3 bg-black/20 rounded">
+                  <div>
+                    <p className="text-white font-medium">{clientName}</p>
+                    <p className="text-sm text-gray-400">
+                      {paidInvoices.length > 0 
+                        ? `Average: ${avgDays} days to payment` 
+                        : 'No payment history yet'}
+                    </p>
+                  </div>
+                  {paidInvoices.length > 0 && (
+                    <span className={`px-3 py-1 bg-${reliabilityColor}-500/20 text-${reliabilityColor}-400 text-sm rounded`}>
+                      {reliability}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
-      </div>
+      )}
 
       {/* Mark as Paid Confirmation Modal */}
       {showMarkPaidModal && selectedInvoice && (
@@ -421,6 +388,8 @@ export default function Dashboard() {
     </div>
   );
 }
+
+
 
 
 

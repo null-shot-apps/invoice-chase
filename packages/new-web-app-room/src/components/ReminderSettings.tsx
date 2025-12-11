@@ -69,9 +69,15 @@ Regards,`,
 
   useEffect(() => {
     // Load settings from localStorage
-    const stored = localStorage.getItem('reminderSettings');
-    if (stored) {
-      setSettings(JSON.parse(stored));
+    const storedSettings = localStorage.getItem('reminderSettings');
+    if (storedSettings) {
+      setSettings(JSON.parse(storedSettings));
+    }
+    
+    // Load templates from localStorage
+    const storedTemplates = localStorage.getItem('reminderTemplates');
+    if (storedTemplates) {
+      setTemplates(JSON.parse(storedTemplates));
     }
   }, []);
 
@@ -268,4 +274,5 @@ Regards,`,
     </div>
   );
 }
+
 
