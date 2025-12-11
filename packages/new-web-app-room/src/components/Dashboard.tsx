@@ -1,18 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-
-interface Invoice {
-  id: string;
-  clientName: string;
-  clientEmail: string;
-  amount: number;
-  dueDate: string;
-  status: 'pending' | 'overdue' | 'paid';
-  daysSinceDue: number;
-  remindersSent: number;
-  lastReminderDate?: string;
-}
+import { getAllInvoices, saveInvoice, type Invoice } from '@/lib/storage';
 
 export default function Dashboard() {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
@@ -21,18 +10,24 @@ export default function Dashboard() {
   const [showReminderModal, setShowReminderModal] = useState(false);
   const [selectedInvoice, setSelectedInvoice] = useState<Invoice | null>(null);
   const [emailPreview, setEmailPreview] = useState({ subject: '', body: '' });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Load invoices from localStorage - NO DUMMY DATA
-    const stored = localStorage.getItem('invoices');
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      setInvoices(parsed);
-    } else {
-      // Start with empty array
-      setInvoices([]);
-    }
+    // Load invoices from real backend - NO DUMMY DATA
+    loadInvoices();
   }, []);
+
+  const loadInvoices = async () => {
+    setLoading(true);
+    try {
+      const data = await getAllInvoices();
+      setInvoices(data);
+    } catch (error) {
+      console.error('Failed to load invoices:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const filteredInvoices = invoices.filter(inv => 
     filter === 'all' ? true : inv.status === filter
@@ -388,6 +383,7 @@ export default function Dashboard() {
     </div>
   );
 }
+
 
 
 
