@@ -13,46 +13,79 @@ export default function InvoiceForm() {
     lateFeeAmount: '',
     lateFeeStartDay: '30'
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setError('');
+    setSuccess('');
     
-    // Create new invoice
-    const newInvoice = {
-      id: Date.now().toString(),
-      clientName: formData.clientName,
-      clientEmail: formData.clientEmail,
-      amount: parseFloat(formData.amount),
-      dueDate: formData.dueDate,
-      description: formData.description,
-      status: 'pending' as const,
-      daysSinceDue: 0,
-      remindersSent: 0,
-      lateFee: formData.lateFeeEnabled ? {
-        amount: parseFloat(formData.lateFeeAmount),
-        startDay: parseInt(formData.lateFeeStartDay)
-      } : undefined
-    };
-
-    // Save to localStorage
-    const stored = localStorage.getItem('invoices');
-    const invoices = stored ? JSON.parse(stored) : [];
-    invoices.push(newInvoice);
-    localStorage.setItem('invoices', JSON.stringify(invoices));
-
-    alert('Invoice created successfully! Automatic reminders are now scheduled.');
+    // Validation
+    if (!formData.clientEmail.includes('@')) {
+      setError('Please enter a valid email address');
+      setLoading(false);
+      return;
+    }
     
-    // Reset form
-    setFormData({
-      clientName: '',
-      clientEmail: '',
-      amount: '',
-      dueDate: '',
-      description: '',
-      lateFeeEnabled: false,
-      lateFeeAmount: '',
-      lateFeeStartDay: '30'
-    });
+    if (parseFloat(formData.amount) <= 0) {
+      setError('Amount must be greater than 0');
+      setLoading(false);
+      return;
+    }
+    
+    try {
+      // Create new invoice
+      const newInvoice = {
+        id: Date.now().toString(),
+        clientName: formData.clientName,
+        clientEmail: formData.clientEmail,
+        amount: parseFloat(formData.amount),
+        dueDate: formData.dueDate,
+        description: formData.description,
+        status: 'pending' as const,
+        daysSinceDue: 0,
+        remindersSent: 0,
+        lateFee: formData.lateFeeEnabled ? {
+          amount: parseFloat(formData.lateFeeAmount),
+          startDay: parseInt(formData.lateFeeStartDay)
+        } : undefined
+      };
+
+      // Save via API
+      const response = await fetch('/api/invoices', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newInvoice)
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to create invoice');
+      }
+
+      setSuccess('Invoice created successfully! Automatic reminders are now scheduled.');
+      
+      // Reset form
+      setFormData({
+        clientName: '',
+        clientEmail: '',
+        amount: '',
+        dueDate: '',
+        description: '',
+        lateFeeEnabled: false,
+        lateFeeAmount: '',
+        lateFeeStartDay: '30'
+      });
+      
+      setTimeout(() => setSuccess(''), 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to create invoice');
+      setTimeout(() => setError(''), 3000);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -195,15 +228,41 @@ export default function InvoiceForm() {
             </ul>
           </div>
 
+          {error && (
+            <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 text-red-200">
+              {error}
+            </div>
+          )}
+          
+          {success && (
+            <div className="bg-green-500/20 border border-green-500/50 rounded-lg p-4 text-green-200">
+              {success}
+            </div>
+          )}
+
           <button
             type="submit"
-            className="w-full px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
+            disabled={loading}
+            className="w-full px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors flex items-center justify-center"
           >
-            Create Invoice & Schedule Reminders
+            {loading ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Creating Invoice...
+              </>
+            ) : (
+              'Create Invoice & Schedule Reminders'
+            )}
           </button>
         </form>
       </div>
     </div>
   );
 }
+
+
+
 

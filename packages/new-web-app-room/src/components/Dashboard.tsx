@@ -20,7 +20,9 @@ export default function Dashboard() {
   const loadInvoices = async () => {
     setLoading(true);
     try {
-      const data = await getAllInvoices();
+      const response = await fetch('/api/invoices');
+      if (!response.ok) throw new Error('Failed to fetch invoices');
+      const data = await response.json();
       setInvoices(data);
     } catch (error) {
       console.error('Failed to load invoices:', error);
@@ -383,6 +385,7 @@ export default function Dashboard() {
     </div>
   );
 }
+
 
 
 
