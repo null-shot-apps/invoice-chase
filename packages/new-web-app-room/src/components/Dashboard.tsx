@@ -134,20 +134,20 @@ export default function Dashboard() {
     <div className="space-y-6">
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-          <p className="text-gray-300 text-sm">Total Outstanding</p>
+        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <p className="text-blue-200/80 text-sm font-medium">Total Outstanding</p>
           <p className="text-3xl font-bold text-white mt-2">${stats.totalOutstanding.toLocaleString()}</p>
         </div>
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-          <p className="text-gray-300 text-sm">Overdue Invoices</p>
-          <p className="text-3xl font-bold text-red-400 mt-2">{stats.overdueCount}</p>
+        <div className="bg-gradient-to-br from-red-500/20 to-red-500/5 backdrop-blur-md rounded-2xl p-6 border border-red-500/30 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <p className="text-red-200/80 text-sm font-medium">Overdue Invoices</p>
+          <p className="text-3xl font-bold text-red-300 mt-2">{stats.overdueCount}</p>
         </div>
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-          <p className="text-gray-300 text-sm">Pending Invoices</p>
-          <p className="text-3xl font-bold text-yellow-400 mt-2">{stats.pendingCount}</p>
+        <div className="bg-gradient-to-br from-yellow-500/20 to-yellow-500/5 backdrop-blur-md rounded-2xl p-6 border border-yellow-500/30 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <p className="text-yellow-200/80 text-sm font-medium">Pending Invoices</p>
+          <p className="text-3xl font-bold text-yellow-300 mt-2">{stats.pendingCount}</p>
         </div>
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-          <p className="text-gray-300 text-sm">Avg Days to Payment</p>
+        <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/10 backdrop-blur-md rounded-2xl p-6 border border-blue-500/30 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <p className="text-blue-200/80 text-sm font-medium">Avg Days to Payment</p>
           <p className="text-3xl font-bold text-white mt-2">{stats.avgDaysToPayment}</p>
         </div>
       </div>
@@ -158,10 +158,10 @@ export default function Dashboard() {
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`px-4 py-2 rounded-lg capitalize transition-all ${
+            className={`px-5 py-2.5 rounded-xl capitalize font-medium transition-all duration-200 ${
               filter === f
-                ? 'bg-purple-600 text-white'
-                : 'bg-white/10 text-gray-300 hover:bg-white/20'
+                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-purple-500/30'
+                : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
             }`}
           >
             {f}
@@ -170,9 +170,9 @@ export default function Dashboard() {
       </div>
 
       {/* Invoices Table */}
-      <div className="bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 overflow-hidden">
+      <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 overflow-hidden shadow-xl">
         <table className="w-full">
-          <thead className="bg-black/30">
+          <thead className="bg-gradient-to-r from-black/40 to-black/30">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
                 Client
@@ -235,13 +235,13 @@ export default function Dashboard() {
                     <>
                       <button
                         onClick={() => openReminderModal(invoice)}
-                        className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors"
+                        className="px-3 py-1.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg text-sm font-medium"
                       >
                         Send Reminder
                       </button>
                       <button
                         onClick={() => openMarkPaidModal(invoice)}
-                        className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white rounded transition-colors"
+                        className="px-3 py-1.5 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg text-sm font-medium"
                       >
                         Mark Paid
                       </button>
@@ -264,7 +264,7 @@ export default function Dashboard() {
 
       {/* Late Payer Insights - Real Data Only */}
       {invoices.length > 0 && (
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-xl">
           <h2 className="text-xl font-bold text-white mb-4">Client Payment Patterns</h2>
           <div className="space-y-3">
             {Array.from(new Set(invoices.map(i => i.clientName))).map(clientName => {
@@ -300,8 +300,8 @@ export default function Dashboard() {
 
       {/* Mark as Paid Confirmation Modal */}
       {showMarkPaidModal && selectedInvoice && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-slate-800 rounded-lg p-6 max-w-md w-full mx-4 border border-white/20">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50">
+          <div className="bg-gradient-to-br from-slate-800/95 to-slate-900/95 backdrop-blur-xl rounded-2xl p-6 max-w-md w-full mx-4 border border-white/20 shadow-2xl">
             <h3 className="text-xl font-bold text-white mb-4">Confirm Payment</h3>
             <p className="text-gray-300 mb-6">
               Are you sure you want to mark invoice #{selectedInvoice.id} from{' '}
@@ -311,7 +311,7 @@ export default function Dashboard() {
             <div className="flex space-x-3">
               <button
                 onClick={confirmMarkAsPaid}
-                className="flex-1 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
+                className="flex-1 px-4 py-2.5 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-xl transition-all duration-200 shadow-lg font-medium"
               >
                 Yes, Mark as Paid
               </button>
@@ -320,7 +320,7 @@ export default function Dashboard() {
                   setShowMarkPaidModal(false);
                   setSelectedInvoice(null);
                 }}
-                className="flex-1 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
+                className="flex-1 px-4 py-2.5 bg-gray-600 hover:bg-gray-700 text-white rounded-xl transition-all duration-200 font-medium"
               >
                 Cancel
               </button>
@@ -331,8 +331,8 @@ export default function Dashboard() {
 
       {/* Send Reminder Email Preview Modal */}
       {showReminderModal && selectedInvoice && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-slate-800 rounded-lg p-6 max-w-2xl w-full mx-4 border border-white/20 max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50">
+          <div className="bg-gradient-to-br from-slate-800/95 to-slate-900/95 backdrop-blur-xl rounded-2xl p-6 max-w-2xl w-full mx-4 border border-white/20 shadow-2xl max-h-[90vh] overflow-y-auto">
             <h3 className="text-xl font-bold text-white mb-4">Send Payment Reminder</h3>
             
             <div className="space-y-4 mb-6">
@@ -365,7 +365,7 @@ export default function Dashboard() {
             <div className="flex space-x-3">
               <button
                 onClick={confirmSendReminder}
-                className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                className="flex-1 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-xl transition-all duration-200 shadow-lg font-medium"
               >
                 Send Reminder Email
               </button>
@@ -374,7 +374,7 @@ export default function Dashboard() {
                   setShowReminderModal(false);
                   setSelectedInvoice(null);
                 }}
-                className="flex-1 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
+                className="flex-1 px-4 py-2.5 bg-gray-600 hover:bg-gray-700 text-white rounded-xl transition-all duration-200 font-medium"
               >
                 Cancel
               </button>
@@ -385,6 +385,7 @@ export default function Dashboard() {
     </div>
   );
 }
+
 
 
 

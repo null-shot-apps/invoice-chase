@@ -95,7 +95,7 @@ Regards,`,
   return (
     <div className="space-y-6">
       {/* General Settings */}
-      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-xl">
         <h2 className="text-2xl font-bold text-white mb-6">Reminder Settings</h2>
         
         <div className="space-y-4">
@@ -199,7 +199,7 @@ Regards,`,
 
           <button
             onClick={saveSettings}
-            className="w-full px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
+            className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl"
           >
             Save Settings
           </button>
@@ -207,12 +207,12 @@ Regards,`,
       </div>
 
       {/* Email Templates */}
-      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-xl">
         <h2 className="text-2xl font-bold text-white mb-6">Email Templates</h2>
         
         <div className="space-y-6">
           {templates.map((template, index) => (
-            <div key={index} className="bg-black/30 rounded-lg p-6 border border-white/10">
+            <div key={index} className="bg-black/30 rounded-xl p-6 border border-white/10 shadow-lg">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-white">
                   Day {template.day} Reminder
@@ -266,7 +266,7 @@ Regards,`,
             localStorage.setItem('reminderTemplates', JSON.stringify(templates));
             alert('Templates saved successfully!');
           }}
-          className="w-full mt-6 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
+          className="w-full mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl"
         >
           Save Templates
         </button>
@@ -274,5 +274,6 @@ Regards,`,
     </div>
   );
 }
+
 
 

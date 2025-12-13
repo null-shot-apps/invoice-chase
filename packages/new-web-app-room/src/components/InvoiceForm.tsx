@@ -90,7 +90,7 @@ export default function InvoiceForm() {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 border border-white/20">
+      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-xl">
         <h2 className="text-2xl font-bold text-white mb-6">Create New Invoice</h2>
         
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -217,8 +217,8 @@ export default function InvoiceForm() {
           </div>
 
           {/* Reminder Schedule Info */}
-          <div className="bg-purple-900/30 border border-purple-500/30 rounded-lg p-4">
-            <h3 className="text-sm font-medium text-purple-300 mb-2">
+          <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-xl p-4 shadow-lg">
+            <h3 className="text-sm font-medium text-blue-200 mb-2">
               📧 Automatic Reminder Schedule
             </h3>
             <ul className="text-sm text-gray-300 space-y-1">
@@ -243,7 +243,7 @@ export default function InvoiceForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors flex items-center justify-center"
+            className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center"
           >
             {loading ? (
               <>
@@ -262,6 +262,9 @@ export default function InvoiceForm() {
     </div>
   );
 }
+
+
+
 
 
 
