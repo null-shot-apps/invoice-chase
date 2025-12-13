@@ -21,8 +21,8 @@ export async function GET() {
     }
     
     return NextResponse.json(JSON.parse(data));
-  } catch (error) {
-    console.error('Error fetching settings:', error);
+  } catch (err) {
+    console.error('Error fetching settings:', err);
     return NextResponse.json({ error: 'Failed to fetch settings' }, { status: 500 });
   }
 }
@@ -36,15 +36,15 @@ export async function POST(request: NextRequest) {
     await storage.put('settings', JSON.stringify(settings));
     
     return NextResponse.json(settings);
-  } catch (error) {
-    console.error('Error updating settings:', error);
+  } catch (err) {
+    console.error('Error updating settings:', err);
     return NextResponse.json({ error: 'Failed to update settings' }, { status: 500 });
   }
 }
 
 // Helper function to get Cloudflare storage
 async function getCloudflareStorage() {
-  // @ts-ignore - Cloudflare Workers KV
+  // @ts-expect-error - Cloudflare Workers KV
   return globalThis.INVOICE_STORAGE;
 }
 

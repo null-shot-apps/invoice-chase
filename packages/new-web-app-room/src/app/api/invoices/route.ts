@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     const invoice = await request.json();
     invoices.push(invoice);
     return NextResponse.json({ success: true, invoice });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to create invoice' }, { status: 500 });
   }
 }
@@ -26,7 +26,7 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ success: true, invoice: updatedInvoice });
     }
     return NextResponse.json({ error: 'Invoice not found' }, { status: 404 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to update invoice' }, { status: 500 });
   }
 }
@@ -37,7 +37,7 @@ export async function DELETE(request: NextRequest) {
     const id = searchParams.get('id');
     invoices = invoices.filter(inv => inv.id !== id);
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to delete invoice' }, { status: 500 });
   }
 }

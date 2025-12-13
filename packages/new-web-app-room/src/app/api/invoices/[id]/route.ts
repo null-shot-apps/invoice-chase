@@ -56,7 +56,7 @@ export async function DELETE(
 
 // Helper function to get Cloudflare storage
 async function getCloudflareStorage() {
-  // @ts-ignore - Cloudflare Workers KV
+  // @ts-expect-error - Cloudflare Workers KV
   return globalThis.INVOICE_STORAGE;
 }
 
