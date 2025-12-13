@@ -199,7 +199,7 @@ Regards,`,
 
           <button
             onClick={saveSettings}
-            className="w-full px-6 py-3 bg-[#1e3a5f] hover:bg-[#152d47] text-white font-bold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg"
+            className="w-full px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg"
           >
             Save Settings
           </button>
@@ -266,7 +266,7 @@ Regards,`,
             localStorage.setItem('reminderTemplates', JSON.stringify(templates));
             alert('Templates saved successfully!');
           }}
-          className="w-full mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl"
+          className="w-full mt-6 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg"
         >
           Save Templates
         </button>
@@ -274,6 +274,7 @@ Regards,`,
     </div>
   );
 }
+
 
 
 

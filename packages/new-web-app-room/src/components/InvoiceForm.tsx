@@ -243,7 +243,7 @@ export default function InvoiceForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-6 py-4 bg-[#1e3a5f] hover:bg-[#152d47] disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center"
+            className="w-full px-6 py-4 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center"
           >
             {loading ? (
               <>
@@ -262,6 +262,7 @@ export default function InvoiceForm() {
     </div>
   );
 }
+
 
 
 
