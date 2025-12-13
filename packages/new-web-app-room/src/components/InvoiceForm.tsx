@@ -104,7 +104,7 @@ export default function InvoiceForm() {
               required
               value={formData.clientName}
               onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
-              className="w-full px-4 py-3 bg-white border-2 border-emerald-100 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-white border-2 border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all"
               placeholder="Acme Corp"
             />
           </div>
@@ -118,7 +118,7 @@ export default function InvoiceForm() {
               required
               value={formData.clientEmail}
               onChange={(e) => setFormData({ ...formData, clientEmail: e.target.value })}
-              className="w-full px-4 py-3 bg-white border-2 border-emerald-100 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-white border-2 border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all"
               placeholder="client@acmecorp.com"
             />
           </div>
@@ -136,7 +136,7 @@ export default function InvoiceForm() {
                 step="0.01"
                 value={formData.amount}
                 onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
-                className="w-full px-4 py-3 bg-white border-2 border-emerald-100 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 bg-white border-2 border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all"
                 placeholder="2500.00"
               />
             </div>
@@ -163,7 +163,7 @@ export default function InvoiceForm() {
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               rows={3}
-              className="w-full px-4 py-3 bg-white border-2 border-emerald-100 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-white border-2 border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all"
               placeholder="Website redesign project - Phase 1"
             />
           </div>
@@ -217,8 +217,8 @@ export default function InvoiceForm() {
           </div>
 
           {/* Reminder Schedule Info */}
-          <div className="bg-gradient-to-br from-emerald-50 to-blue-50 border-2 border-emerald-200 rounded-xl p-5 shadow-sm">
-            <h3 className="text-sm font-semibold text-emerald-800 mb-2">
+          <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-5 shadow-sm">
+            <h3 className="text-sm font-semibold text-[#1e3a5f] mb-2">
               📧 Automatic Reminder Schedule
             </h3>
             <ul className="text-sm text-slate-700 space-y-1.5">
@@ -243,7 +243,7 @@ export default function InvoiceForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-6 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 disabled:from-slate-400 disabled:to-slate-500 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center"
+            className="w-full px-6 py-4 bg-[#1e3a5f] hover:bg-[#152d47] disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center"
           >
             {loading ? (
               <>
@@ -262,6 +262,7 @@ export default function InvoiceForm() {
     </div>
   );
 }
+
 
 
 

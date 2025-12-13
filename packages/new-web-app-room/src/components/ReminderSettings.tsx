@@ -95,57 +95,57 @@ Regards,`,
   return (
     <div className="space-y-6">
       {/* General Settings */}
-      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-xl">
-        <h2 className="text-2xl font-bold text-white mb-6">Reminder Settings</h2>
+      <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg">
+        <h2 className="text-2xl font-bold text-slate-900 mb-6">Reminder Settings</h2>
         
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
               Your Name
             </label>
             <input
               type="text"
               value={settings.fromName}
               onChange={(e) => setSettings({ ...settings, fromName: e.target.value })}
-              className="w-full px-4 py-2 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="w-full px-4 py-3 bg-white border-2 border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all"
               placeholder="John Doe"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
               Your Email
             </label>
             <input
               type="email"
               value={settings.fromEmail}
               onChange={(e) => setSettings({ ...settings, fromEmail: e.target.value })}
-              className="w-full px-4 py-2 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="w-full px-4 py-3 bg-white border-2 border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all"
               placeholder="you@example.com"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
               CC Email (optional)
             </label>
             <input
               type="email"
               value={settings.ccEmail}
               onChange={(e) => setSettings({ ...settings, ccEmail: e.target.value })}
-              className="w-full px-4 py-2 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="w-full px-4 py-3 bg-white border-2 border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all"
               placeholder="accounting@example.com"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
               Timezone
             </label>
             <select
               value={settings.timezone}
               onChange={(e) => setSettings({ ...settings, timezone: e.target.value })}
-              className="w-full px-4 py-2 bg-black/30 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="w-full px-4 py-3 bg-white border-2 border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all"
             >
               <option value="America/New_York">Eastern Time (ET)</option>
               <option value="America/Chicago">Central Time (CT)</option>
@@ -156,16 +156,16 @@ Regards,`,
             </select>
           </div>
 
-          <div className="space-y-3 pt-4 border-t border-white/20">
+          <div className="space-y-3 pt-4 border-t border-slate-200">
             <div className="flex items-center">
               <input
                 type="checkbox"
                 id="respectBusinessHours"
                 checked={settings.respectBusinessHours}
                 onChange={(e) => setSettings({ ...settings, respectBusinessHours: e.target.checked })}
-                className="w-4 h-4 text-purple-600 bg-black/30 border-white/20 rounded focus:ring-purple-600"
+                className="w-5 h-5 text-[#1e3a5f] bg-white border-2 border-slate-200 rounded focus:ring-2 focus:ring-[#1e3a5f]"
               />
-              <label htmlFor="respectBusinessHours" className="ml-2 text-sm text-gray-300">
+              <label htmlFor="respectBusinessHours" className="ml-3 text-sm font-medium text-slate-700">
                 Only send reminders during business hours (9 AM - 5 PM)
               </label>
             </div>
@@ -176,9 +176,9 @@ Regards,`,
                 id="avoidWeekends"
                 checked={settings.avoidWeekends}
                 onChange={(e) => setSettings({ ...settings, avoidWeekends: e.target.checked })}
-                className="w-4 h-4 text-purple-600 bg-black/30 border-white/20 rounded focus:ring-purple-600"
+                className="w-5 h-5 text-[#1e3a5f] bg-white border-2 border-slate-200 rounded focus:ring-2 focus:ring-[#1e3a5f]"
               />
-              <label htmlFor="avoidWeekends" className="ml-2 text-sm text-gray-300">
+              <label htmlFor="avoidWeekends" className="ml-3 text-sm font-medium text-slate-700">
                 Avoid sending reminders on weekends
               </label>
             </div>
@@ -189,9 +189,9 @@ Regards,`,
                 id="autoStopOnPayment"
                 checked={settings.autoStopOnPayment}
                 onChange={(e) => setSettings({ ...settings, autoStopOnPayment: e.target.checked })}
-                className="w-4 h-4 text-purple-600 bg-black/30 border-white/20 rounded focus:ring-purple-600"
+                className="w-5 h-5 text-[#1e3a5f] bg-white border-2 border-slate-200 rounded focus:ring-2 focus:ring-[#1e3a5f]"
               />
-              <label htmlFor="autoStopOnPayment" className="ml-2 text-sm text-gray-300">
+              <label htmlFor="autoStopOnPayment" className="ml-3 text-sm font-medium text-slate-700">
                 Automatically stop reminders when payment is received
               </label>
             </div>
@@ -199,7 +199,7 @@ Regards,`,
 
           <button
             onClick={saveSettings}
-            className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="w-full px-6 py-3 bg-[#1e3a5f] hover:bg-[#152d47] text-white font-bold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg"
           >
             Save Settings
           </button>
@@ -207,20 +207,20 @@ Regards,`,
       </div>
 
       {/* Email Templates */}
-      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-xl">
-        <h2 className="text-2xl font-bold text-white mb-6">Email Templates</h2>
+      <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg">
+        <h2 className="text-2xl font-bold text-slate-900 mb-6">Email Templates</h2>
         
         <div className="space-y-6">
           {templates.map((template, index) => (
-            <div key={index} className="bg-black/30 rounded-xl p-6 border border-white/10 shadow-lg">
+            <div key={index} className="bg-slate-50 rounded-xl p-6 border border-slate-200 shadow-sm">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-white">
+                <h3 className="text-lg font-semibold text-slate-900">
                   Day {template.day} Reminder
                 </h3>
                 <select
                   value={template.tone}
                   onChange={(e) => updateTemplate(index, 'tone', e.target.value)}
-                  className="px-3 py-1 bg-black/50 border border-white/20 rounded text-white text-sm focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  className="px-3 py-1.5 bg-white border-2 border-slate-200 rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]"
                 >
                   <option value="friendly">Friendly</option>
                   <option value="firm">Firm</option>
@@ -230,30 +230,30 @@ Regards,`,
 
               <div className="space-y-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-sm font-semibold text-slate-700 mb-2">
                     Subject Line
                   </label>
                   <input
                     type="text"
                     value={template.subject}
                     onChange={(e) => updateTemplate(index, 'subject', e.target.value)}
-                    className="w-full px-4 py-2 bg-black/50 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
+                    className="w-full px-4 py-3 bg-white border-2 border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-sm font-semibold text-slate-700 mb-2">
                     Message
                   </label>
                   <textarea
                     value={template.message}
                     onChange={(e) => updateTemplate(index, 'message', e.target.value)}
                     rows={8}
-                    className="w-full px-4 py-2 bg-black/50 border border-white/20 rounded-lg text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-purple-600"
+                    className="w-full px-4 py-3 bg-white border-2 border-slate-200 rounded-lg text-slate-900 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all"
                   />
                 </div>
 
-                <div className="text-xs text-gray-400">
+                <div className="text-xs text-slate-500">
                   Available variables: {'{clientName}'}, {'{invoiceId}'}, {'{amount}'}, {'{dueDate}'}, {'{daysOverdue}'}, {'{lateFee}'}, {'{totalWithLateFee}'}
                 </div>
               </div>
@@ -274,6 +274,7 @@ Regards,`,
     </div>
   );
 }
+
 
 
 

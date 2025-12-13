@@ -148,7 +148,7 @@ export default function Dashboard() {
         </div>
         <div className="bg-white border border-blue-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
           <p className="text-slate-600 text-sm font-medium">Avg Days to Payment</p>
-          <p className="text-2xl font-bold text-blue-900 mt-1">{stats.avgDaysToPayment}</p>
+          <p className="text-2xl font-bold text-[#1e3a5f] mt-1">{stats.avgDaysToPayment}</p>
         </div>
       </div>
 
@@ -160,8 +160,8 @@ export default function Dashboard() {
             onClick={() => setFilter(f)}
             className={`px-5 py-2.5 text-sm capitalize font-medium rounded-lg transition-all duration-200 ${
               filter === f
-                ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200'
-                : 'bg-white border border-emerald-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200'
+                ? 'bg-[#1e3a5f] text-white shadow-md shadow-blue-200'
+                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-[#1e3a5f] hover:border-slate-300'
             }`}
           >
             {f}
@@ -235,7 +235,7 @@ export default function Dashboard() {
                     <>
                       <button
                         onClick={() => openReminderModal(invoice)}
-                        className="px-4 py-2 bg-gradient-to-r from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 text-white rounded-lg text-sm font-medium shadow-sm transition-all"
+                        className="px-4 py-2 bg-[#1e3a5f] hover:bg-[#152d47] text-white rounded-lg text-sm font-medium shadow-sm transition-all"
                       >
                         Send Reminder
                       </button>
@@ -315,7 +315,7 @@ export default function Dashboard() {
             <div className="flex gap-3">
               <button
                 onClick={confirmMarkAsPaid}
-                className="flex-1 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md font-medium"
+                className="flex-1 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md font-medium"
               >
                 Yes, Mark as Paid
               </button>
@@ -369,7 +369,7 @@ export default function Dashboard() {
             <div className="flex gap-3">
               <button
                 onClick={confirmSendReminder}
-                className="flex-1 px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-md font-medium"
+                className="flex-1 px-4 py-2 bg-[#1e3a5f] hover:bg-[#152d47] text-white rounded-md font-medium"
               >
                 Send Reminder Email
               </button>
@@ -389,6 +389,7 @@ export default function Dashboard() {
     </div>
   );
 }
+
 
 
 

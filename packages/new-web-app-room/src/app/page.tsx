@@ -13,13 +13,13 @@ export default function InvoiceChase() {
       <nav className="bg-white/80 backdrop-blur-sm border-b border-emerald-100 shadow-sm">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-blue-900 bg-clip-text text-transparent">InvoiceChase</h1>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-[#1e3a5f] bg-clip-text text-transparent">InvoiceChase</h1>
             <div className="flex gap-2">
               <button
                 onClick={() => setActiveTab('dashboard')}
                 className={`px-5 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
                   activeTab === 'dashboard'
-                    ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200'
+                    ? 'bg-[#1e3a5f] text-white shadow-md shadow-blue-200'
                     : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-700'
                 }`}
               >
@@ -29,7 +29,7 @@ export default function InvoiceChase() {
                 onClick={() => setActiveTab('new-invoice')}
                 className={`px-5 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
                   activeTab === 'new-invoice'
-                    ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200'
+                    ? 'bg-[#1e3a5f] text-white shadow-md shadow-blue-200'
                     : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-700'
                 }`}
               >
@@ -39,7 +39,7 @@ export default function InvoiceChase() {
                 onClick={() => setActiveTab('settings')}
                 className={`px-5 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
                   activeTab === 'settings'
-                    ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200'
+                    ? 'bg-[#1e3a5f] text-white shadow-md shadow-blue-200'
                     : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-700'
                 }`}
               >
@@ -58,6 +58,7 @@ export default function InvoiceChase() {
     </div>
   );
 }
+
 
 
 
