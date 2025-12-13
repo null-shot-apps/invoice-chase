@@ -90,13 +90,13 @@ export default function InvoiceForm() {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-xl">
-        <h2 className="text-2xl font-bold text-white mb-6">Create New Invoice</h2>
+      <div className="bg-white rounded-xl p-8 border border-emerald-100 shadow-lg">
+        <h2 className="text-2xl font-bold text-slate-900 mb-6">Create New Invoice</h2>
         
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Client Information */}
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
               Client Name *
             </label>
             <input
@@ -104,13 +104,13 @@ export default function InvoiceForm() {
               required
               value={formData.clientName}
               onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
-              className="w-full px-4 py-2 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="w-full px-4 py-3 bg-white border-2 border-emerald-100 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
               placeholder="Acme Corp"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
               Client Email *
             </label>
             <input
@@ -118,7 +118,7 @@ export default function InvoiceForm() {
               required
               value={formData.clientEmail}
               onChange={(e) => setFormData({ ...formData, clientEmail: e.target.value })}
-              className="w-full px-4 py-2 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="w-full px-4 py-3 bg-white border-2 border-emerald-100 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
               placeholder="client@acmecorp.com"
             />
           </div>
@@ -126,7 +126,7 @@ export default function InvoiceForm() {
           {/* Invoice Details */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">
                 Amount *
               </label>
               <input
@@ -136,13 +136,13 @@ export default function InvoiceForm() {
                 step="0.01"
                 value={formData.amount}
                 onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
-                className="w-full px-4 py-2 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                className="w-full px-4 py-3 bg-white border-2 border-emerald-100 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
                 placeholder="2500.00"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">
                 Due Date *
               </label>
               <input
@@ -150,35 +150,35 @@ export default function InvoiceForm() {
                 required
                 value={formData.dueDate}
                 onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
-                className="w-full px-4 py-2 bg-black/30 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
+                className="w-full px-4 py-3 bg-white border-2 border-emerald-100 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
               Description
             </label>
             <textarea
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               rows={3}
-              className="w-full px-4 py-2 bg-black/30 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="w-full px-4 py-3 bg-white border-2 border-emerald-100 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
               placeholder="Website redesign project - Phase 1"
             />
           </div>
 
           {/* Late Fee Settings */}
-          <div className="border-t border-white/20 pt-6">
+          <div className="border-t border-emerald-100 pt-6">
             <div className="flex items-center mb-4">
               <input
                 type="checkbox"
                 id="lateFeeEnabled"
                 checked={formData.lateFeeEnabled}
                 onChange={(e) => setFormData({ ...formData, lateFeeEnabled: e.target.checked })}
-                className="w-4 h-4 text-purple-600 bg-black/30 border-white/20 rounded focus:ring-purple-600"
+                className="w-5 h-5 text-emerald-600 bg-white border-2 border-emerald-200 rounded focus:ring-2 focus:ring-emerald-500"
               />
-              <label htmlFor="lateFeeEnabled" className="ml-2 text-sm font-medium text-gray-300">
+              <label htmlFor="lateFeeEnabled" className="ml-3 text-sm font-semibold text-slate-700">
                 Enable Late Fees
               </label>
             </div>
@@ -217,11 +217,11 @@ export default function InvoiceForm() {
           </div>
 
           {/* Reminder Schedule Info */}
-          <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-xl p-4 shadow-lg">
-            <h3 className="text-sm font-medium text-blue-200 mb-2">
+          <div className="bg-gradient-to-br from-emerald-50 to-blue-50 border-2 border-emerald-200 rounded-xl p-5 shadow-sm">
+            <h3 className="text-sm font-semibold text-emerald-800 mb-2">
               📧 Automatic Reminder Schedule
             </h3>
-            <ul className="text-sm text-gray-300 space-y-1">
+            <ul className="text-sm text-slate-700 space-y-1.5">
               <li>• Day 7: Friendly reminder</li>
               <li>• Day 14: Firmer follow-up</li>
               <li>• Day 30: Final notice with late fees (if enabled)</li>
@@ -229,13 +229,13 @@ export default function InvoiceForm() {
           </div>
 
           {error && (
-            <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 text-red-200">
+            <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4 text-red-700 font-medium">
               {error}
             </div>
           )}
           
           {success && (
-            <div className="bg-green-500/20 border border-green-500/50 rounded-lg p-4 text-green-200">
+            <div className="bg-emerald-50 border-2 border-emerald-200 rounded-lg p-4 text-emerald-700 font-medium">
               {success}
             </div>
           )}
@@ -243,7 +243,7 @@ export default function InvoiceForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center"
+            className="w-full px-6 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 disabled:from-slate-400 disabled:to-slate-500 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center"
           >
             {loading ? (
               <>
@@ -262,6 +262,12 @@ export default function InvoiceForm() {
     </div>
   );
 }
+
+
+
+
+
+
 
 
 

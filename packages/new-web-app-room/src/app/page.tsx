@@ -9,38 +9,38 @@ export default function InvoiceChase() {
   const [activeTab, setActiveTab] = useState<'dashboard' | 'new-invoice' | 'settings'>('dashboard');
 
   return (
-    <div className="min-h-screen max-h-screen overflow-y-auto bg-white">
-      <nav className="border-b border-gray-200 bg-white">
+    <div className="min-h-screen max-h-screen overflow-y-auto">
+      <nav className="bg-white/80 backdrop-blur-sm border-b border-emerald-100 shadow-sm">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
-            <h1 className="text-xl font-semibold text-gray-900">InvoiceChase</h1>
-            <div className="flex gap-1">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-blue-900 bg-clip-text text-transparent">InvoiceChase</h1>
+            <div className="flex gap-2">
               <button
                 onClick={() => setActiveTab('dashboard')}
-                className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                className={`px-5 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
                   activeTab === 'dashboard'
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200'
+                    : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-700'
                 }`}
               >
                 Dashboard
               </button>
               <button
                 onClick={() => setActiveTab('new-invoice')}
-                className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                className={`px-5 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
                   activeTab === 'new-invoice'
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200'
+                    : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-700'
                 }`}
               >
                 New Invoice
               </button>
               <button
                 onClick={() => setActiveTab('settings')}
-                className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                className={`px-5 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
                   activeTab === 'settings'
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200'
+                    : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-700'
                 }`}
               >
                 Settings
@@ -58,6 +58,7 @@ export default function InvoiceChase() {
     </div>
   );
 }
+
 
 
 

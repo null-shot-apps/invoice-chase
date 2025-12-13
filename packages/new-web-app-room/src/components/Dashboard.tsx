@@ -134,21 +134,21 @@ export default function Dashboard() {
     <div className="space-y-6">
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white border border-gray-200 rounded-lg p-5">
-          <p className="text-gray-600 text-sm">Total Outstanding</p>
-          <p className="text-2xl font-semibold text-gray-900 mt-1">${stats.totalOutstanding.toLocaleString()}</p>
+        <div className="bg-white border border-emerald-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+          <p className="text-slate-600 text-sm font-medium">Total Outstanding</p>
+          <p className="text-2xl font-bold text-emerald-600 mt-1">${stats.totalOutstanding.toLocaleString()}</p>
         </div>
-        <div className="bg-white border border-gray-200 rounded-lg p-5">
-          <p className="text-gray-600 text-sm">Overdue Invoices</p>
-          <p className="text-2xl font-semibold text-red-600 mt-1">{stats.overdueCount}</p>
+        <div className="bg-white border border-red-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+          <p className="text-slate-600 text-sm font-medium">Overdue Invoices</p>
+          <p className="text-2xl font-bold text-red-600 mt-1">{stats.overdueCount}</p>
         </div>
-        <div className="bg-white border border-gray-200 rounded-lg p-5">
-          <p className="text-gray-600 text-sm">Pending Invoices</p>
-          <p className="text-2xl font-semibold text-amber-600 mt-1">{stats.pendingCount}</p>
+        <div className="bg-white border border-amber-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+          <p className="text-slate-600 text-sm font-medium">Pending Invoices</p>
+          <p className="text-2xl font-bold text-amber-600 mt-1">{stats.pendingCount}</p>
         </div>
-        <div className="bg-white border border-gray-200 rounded-lg p-5">
-          <p className="text-gray-600 text-sm">Avg Days to Payment</p>
-          <p className="text-2xl font-semibold text-gray-900 mt-1">{stats.avgDaysToPayment}</p>
+        <div className="bg-white border border-blue-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+          <p className="text-slate-600 text-sm font-medium">Avg Days to Payment</p>
+          <p className="text-2xl font-bold text-blue-900 mt-1">{stats.avgDaysToPayment}</p>
         </div>
       </div>
 
@@ -158,10 +158,10 @@ export default function Dashboard() {
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`px-4 py-2 text-sm capitalize font-medium rounded-md transition-colors ${
+            className={`px-5 py-2.5 text-sm capitalize font-medium rounded-lg transition-all duration-200 ${
               filter === f
-                ? 'bg-gray-900 text-white'
-                : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50'
+                ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-md shadow-emerald-200'
+                : 'bg-white border border-emerald-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200'
             }`}
           >
             {f}
@@ -170,33 +170,33 @@ export default function Dashboard() {
       </div>
 
       {/* Invoices Table */}
-      <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+      <div className="bg-white border border-emerald-100 rounded-xl overflow-hidden shadow-sm">
         <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="bg-gradient-to-r from-emerald-50 to-blue-50 border-b border-emerald-100">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase">
+              <th className="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">
                 Client
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase">
+              <th className="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">
                 Amount
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase">
+              <th className="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">
                 Due Date
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase">
+              <th className="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">
                 Status
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase">
+              <th className="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">
                 Reminders
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase">
+              <th className="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-emerald-50">
             {filteredInvoices.map(invoice => (
-              <tr key={invoice.id} className="hover:bg-gray-50">
+              <tr key={invoice.id} className="hover:bg-emerald-50/50 transition-colors">
                 <td className="px-6 py-4 text-sm text-gray-900">
                   {invoice.clientName}
                 </td>
@@ -212,12 +212,12 @@ export default function Dashboard() {
                   )}
                 </td>
                 <td className="px-6 py-4">
-                  <span className={`px-2 py-1 text-xs font-medium rounded ${
+                  <span className={`px-3 py-1.5 text-xs font-semibold rounded-full ${
                     invoice.status === 'paid' 
-                      ? 'bg-green-50 text-green-700'
+                      ? 'bg-emerald-100 text-emerald-700'
                       : invoice.status === 'overdue'
-                      ? 'bg-red-50 text-red-700'
-                      : 'bg-amber-50 text-amber-700'
+                      ? 'bg-red-100 text-red-700'
+                      : 'bg-amber-100 text-amber-700'
                   }`}>
                     {invoice.status}
                   </span>
@@ -235,13 +235,13 @@ export default function Dashboard() {
                     <>
                       <button
                         onClick={() => openReminderModal(invoice)}
-                        className="px-3 py-1.5 bg-gray-900 hover:bg-gray-800 text-white rounded-md text-sm font-medium"
+                        className="px-4 py-2 bg-gradient-to-r from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 text-white rounded-lg text-sm font-medium shadow-sm transition-all"
                       >
                         Send Reminder
                       </button>
                       <button
                         onClick={() => openMarkPaidModal(invoice)}
-                        className="px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm font-medium"
+                        className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white rounded-lg text-sm font-medium shadow-sm transition-all"
                       >
                         Mark Paid
                       </button>
@@ -389,6 +389,12 @@ export default function Dashboard() {
     </div>
   );
 }
+
+
+
+
+
+
 
 
 
